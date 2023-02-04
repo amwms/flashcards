@@ -1,0 +1,43 @@
+.grid-choices {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    padding: 6em;
+}
+
+a {
+    flex: 1;
+    margin: 15px;
+    width: 300px;
+    text-decoration: none;
+}
+
+.choice {
+    width: 300px;
+    height: 100px;
+    background-color: rgb(89, 140, 216);
+    color: azure;
+    padding: 2em;
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.choice:hover {
+    background-color: rgb(100, 132, 180);
+    color: rgb(163, 175, 175);
+}
+
+
+.deck-names {
+    width: fit-content;
+    height: fit-content;
+
+    padding: 0;
+    margin: 0;
+
+    font-size: 40px;
+}

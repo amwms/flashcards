@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} Flashcards {% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/grid-choice.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="grid-choices">  
+        {%for i in range(0, len)%}
+            <a href="{{ url_for('card_deck', deck=decks[i], id=0) }}">
+                <div class="choice">
+                    <span class="deck-names"> {{ decks[i] }} </span>
+                </div>
+            </a>
+        {%endfor%} 
+    </div>
+{% endblock %}
