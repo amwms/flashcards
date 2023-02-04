@@ -77,18 +77,5 @@ def add_card():
 
    return render_template('add_card.html')
 
-@app.route('/favorites', methods=['GET'])
-def favorites():
-   pass
-
-# def make_favorite(id):
-#    cards = []
-#    with open('db/db.json', 'r') as open_file:
-#       json_object = json.load(open_file)
-#       cards = json_object["card_data"]
-
-#    if card[id]['is_favorite'] == True:
-#       card[id]['is_favorite']
-
 if __name__ == "__main__":
    app.run(debug=True, port=80)

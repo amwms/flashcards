@@ -9,7 +9,7 @@
 {% block content %}
     <div class="grid-choices">  
         {%for i in range(0, len)%}
-            <a href="{{ url_for('card_deck', deck=decks[i], id=0) }}">
+            <a class="grid-a" href="{{ url_for('card_deck', deck=decks[i], id=0) }}">
                 <div class="choice">
                     <span class="deck-names"> {{ decks[i] }} </span>
                 </div>
