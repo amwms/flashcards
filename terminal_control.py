@@ -28,6 +28,7 @@ def add_flashcard(card_title, card_label, card_text):
             json.dump(json_object, db_file, indent=4)
 
 def list_decks():
+    os.system('clear') 
     print("\u001b[1m"+"Decks:"+"\u001b[0m")
     with open('db/db.json', 'r') as open_file:
         json_object = json.load(open_file)
@@ -54,11 +55,63 @@ def show_deck(deck):
     press_q_to_quit()
     return
 
+def delete_deck():
+    deck = input("Which deck would you like to delete? (or q to quit)")
+    if deck == "q":
+        return
+
+    with open('db/db.json', 'r') as open_file:
+        json_object = json.load(open_file)
+        if deck in json_object:
+            answer = input("\u001b[31;1m"+"Are you sure you want to delete deck: " + deck + "? y/n"+"\u001b[0m")
+
+            if answer:
+                del json_object[deck]
+                with open('db/db.json', 'w') as db_file:
+                    json.dump(json_object, db_file, indent=4)
+
+            print("\u001b[31;1m"+"Deck " + deck + " deleted!"+"\u001b[0m")
+        else:
+            print("\u001b[31;1m"+"No such deck exists!"+"\u001b[0m")
+
+    print("")
+    press_q_to_quit()
+    return
+
+
+def clear_deck():
+    deck = input("Which deck would you like to clear? (or q to quit)")
+    if deck == "q":
+        return
+
+    with open('db/db.json', 'r') as open_file:
+        json_object = json.load(open_file)
+        if deck in json_object:
+            answer = input("\u001b[31;1m"+"Are you sure you want to clear deck: " + deck + "? y/n"+"\u001b[0m")
+
+            if answer:
+                json_object[deck] = []
+                with open('db/db.json', 'w') as db_file:
+                    json.dump(json_object, db_file, indent=4)
+                    
+            print("\u001b[31;1m"+"Deck " + deck + " deleted!"+"\u001b[0m")
+        else:
+            print("\u001b[31;1m"+"No such deck exists!"+"\u001b[0m")
+
+    print("")
+    press_q_to_quit()
+    return
+
 
 def prompt_add_flashcard():
     while(True):
         card_title = input("Input the card title:") 
-        card_label = input("Input what deck should the card be added to:") 
+        while(True):
+            card_label = input("Input what deck should the card be added to:")
+            if card_label == "q":
+                print("A deck can't be called \"q\"!")
+            else:
+                break
         card_text = input("Input the card description:") 
 
         add_flashcard(card_title, card_label, card_text)
@@ -82,43 +135,74 @@ def prompt_show_deck():
             else:
                 print("\u001b[31;1m"+"No such deck exists!"+"\u001b[0m")
 
+def delete_decks():
+    while(True):
+        print("\u001b[1m"+"Actions"+"\u001b[0m")
+        print("(1) Show deck")
+        print("(2) List decks")
+        print("(3) Delete deck")
+        print("(4) Clear deck")
+        print("(5) Back")
+
+        action_id = input("\u001b[36;1m"+"What do you want to do?"+"\u001b[0m")
+
+        if action_id == "1":
+            os.system('clear') 
+            prompt_show_deck()
+            os.system('clear') 
+        elif action_id == "2":
+            list_decks()
+            os.system('clear') 
+        elif action_id == "3":
+            os.system('clear') 
+            delete_deck()
+            os.system('clear') 
+        elif action_id == "4":
+            os.system('clear') 
+            clear_deck()
+            os.system('clear') 
+        elif action_id == "5":
+            return
+        else:
+            print("That is not a correct action. Please choose a correct action:")
 
 def list_deck_cards():
     while(True):
-        os.system('clear') 
         print("\u001b[1m"+"Actions"+"\u001b[0m")
         print("(1) Show deck")
         print("(2) List decks")
         print("(3) Back")
 
         action_id = input("\u001b[36;1m"+"What do you want to do?"+"\u001b[0m")
-        action_id = int(action_id)
 
-        if action_id == 1:
+        if action_id == "1":
             prompt_show_deck()
-        elif action_id == 2:
+            os.system('clear') 
+        elif action_id == "2":
             list_decks()
-        elif action_id == 3:
+            os.system('clear') 
+        elif action_id == "3":
             return
         else:
             print("That is not a correct action. Please choose a correct action:")
 
 def add_flashcards():
     while(True):
-        os.system('clear') 
         print("\u001b[1m"+"Actions:"+"\u001b[0m")
         print("(1) Add card")
         print("(2) List decks")
         print("(3) Back")
 
         action_id = input("\u001b[36;1m"+"What do you want to do?"+"\u001b[0m")
-        action_id = int(action_id)
 
-        if action_id == 1:
+        if action_id == "1":
+            os.system('clear') 
             prompt_add_flashcard()
-        elif action_id == 2:
+            os.system('clear') 
+        elif action_id == "2":
             list_decks()
-        elif action_id == 3:
+            os.system('clear') 
+        elif action_id == "3":
             return
         else:
             print("That is not a correct action. Please choose a correct action:")
@@ -130,22 +214,25 @@ def control():
         print("(1) Add cards")
         print("(2) List decks")
         print("(3) List cards in deck")
-        print("(4) Quit")
+        print("(4) Delete deck")
+        print("(5) Quit")
 
         action_id = input("\u001b[36;1m"+"What do you want to do?"+"\u001b[0m")
-        action_id = int(action_id)
 
 
-        if action_id == 1:
+        if action_id == "1":
             os.system('clear') 
             add_flashcards()
-        elif action_id == 2:
+        elif action_id == "2":
             os.system('clear')
             list_decks()
-        elif action_id == 3:
+        elif action_id == "3":
             os.system('clear')
             list_deck_cards()
-        if action_id == 4:
+        elif action_id == "4":
+            os.system('clear')
+            delete_decks()
+        if action_id == "5":
             return
         else:
             print("That is not a correct action id. Please choose a correct action:")
