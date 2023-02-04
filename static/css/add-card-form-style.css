@@ -1,0 +1,52 @@
+.form-content {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    padding: 6em;
+}
+
+form {
+    width: 50%;
+    height: 50%;
+}
+
+.actions {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+
+    margin: 10px;
+}
+
+.submit-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background-color: #749bc4;
+    color: azure;
+    height: 30px;
+    width: 80px;
+
+    font-size: 17px;
+}
+
+.icon {
+    font-size: medium;
+    margin: 0px;
+}
+
+.title input {
+    width: 100%;
+}
+
+.label input {
+    width: 100%;
+}
+
+.description textarea {
+    width: 100%;
+}

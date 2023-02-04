@@ -1,0 +1,134 @@
+.content {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    padding: 6em;
+}
+
+.card {
+    border-radius: 2px;
+    /* box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset; */
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+
+    width: 600px;
+    height: 450px;
+    margin: 20px;
+    padding: 0.5em;
+    padding-bottom: 1.5em;
+}
+
+.card {
+    display: grid;
+    grid-template-rows: 1.4fr 0.1fr 8fr 0.4fr;
+    grid-template-columns: auto;
+    grid-template-areas:
+      "header"
+      "divider"
+      "main"
+      "buttons";
+}
+  
+.divider {
+    grid-area: divider;
+
+    height: 0;
+    width: auto;
+
+    margin-left: 10px;
+    margin-right: 10px;
+
+    border: none;
+    border-top: 1px solid rgb(189, 193, 197);
+ }
+  
+.card-header {
+    grid-area: header;
+    padding-left: 1em;
+    margin: 0.75em;
+
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+  
+.card-content {
+    grid-area: main;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: auto;
+    width: auto;
+    padding: 1em;
+}
+
+.card-actions {
+    grid-area: buttons;
+  
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+}
+
+label input[type="checkbox"] {
+    display: none;
+}
+
+.favorite-button {
+    float: left;
+
+    margin-left: 2em;
+    position: relative;
+    cursor: pointer;
+}
+
+.favorite-button .icon {
+    color: crimson;
+    position: absolute;
+    top: 0.4em;
+    left: -1.25em;
+    font-size: 24px;
+}
+
+.favorite-button .empty-icon {
+    color: crimson;
+}
+
+.favorite-button .filled-icon {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.favorite-button:hover .filled-icon {
+    opacity: 0.25;
+}
+
+.favorite-button input[type="checkbox"]:checked ~ .filled-icon {
+    opacity: 1;
+}
+
+.next {
+    display: inline-block;
+    float: right;
+
+    color: rgb(34, 98, 170);
+    width: 36px;
+    height: 36px;
+}
+
+.next:hover {
+    color: rgb(20, 36, 54);
+
+    border-radius: 10em;
+    background-color: rgb(222, 229, 238);
+}
+
+.next-icon {
+    color: inherit;
+    font-size: 36px;
+}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} Flashcards {% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add-card-form-style.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="form-content">   
+        <form method="post" action="{{ url_for('add_card') }}">
+            <div class="title">
+                <label for="card_title"> Card Title </label><br>
+                <input type="text" id="card_title" name="card_title" placeholder="Title" required />
+            </div>   
+            <!-- <br>
+            <div class="label">
+                <label for="card_label"> Deck Name </label><br>
+                <input type="text" id="card_label" name="card_label" placeholder="Deck Name" required />
+            </div>    -->
+            <br>
+            <div class="description" appearance="fill">
+                <label>Card Text</label><br>
+                <textarea class="description" maxlength="500" rows="8"></textarea>
+            </div>
+            
+            <div class="actions">
+                <button class="submit-button right-button" aria-label="Icon send button" class="send-icon" type="submit">
+                    <span>Send</span> <i class="icon material-icons">send</i>
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
