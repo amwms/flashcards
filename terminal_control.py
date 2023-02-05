@@ -42,14 +42,21 @@ def list_decks():
 
 def show_deck(deck):
     os.system('clear') 
-    print("\u001b[1m" + deck + ":\u001b[0m")
-    print(" - - - - - - - - - - - - - - - -")       
+
+    columns, _ = os.get_terminal_size()
+    print((" " * ((columns - len(deck)) // 2)) + "\u001b[1m" + deck + "\u001b[0m")
+    print("\u001b[1m" + ("-" * columns) + "\u001b[0m")       
 
     with open('db/db.json', 'r') as open_file:
         json_object = json.load(open_file)
         
+        columns, _ = os.get_terminal_size()
+
         for card in json_object[deck]:
-            print(card["card_title"] + "   " + card["card_text"])
+            print("\u001b[1m"+"\u001b[35m" + ("-" * columns) + "\u001b[0m")
+            print("\u001b[1m"+"\u001b[36;1m" + card["card_title"] + "\u001b[0m")
+            print(card["card_text"])
+            print("\u001b[1m"+"\u001b[35m" + ("-" * columns) + "\u001b[0m")
 
     print("")
     press_q_to_quit()
