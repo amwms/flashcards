@@ -15,7 +15,6 @@ def index():
 
 @app.route('/card', methods=['GET'])
 def card():
-   # return redirect('/card_deck/default_deck/0')
    decks = []
    with open('db/db.json', 'r') as open_file:
       json_object = json.load(open_file)
