@@ -63,3 +63,6 @@ body {
     color: inherit;
 }
 
+p {
+    font-weight: normal;
+}

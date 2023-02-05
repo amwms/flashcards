@@ -2,8 +2,11 @@
 
 Flashcards project.
 
+## Modify card decks using UI:
+You can add cards using the UI in "Add Cards" (you can also add new decks - just specify a new deck name when adding a card an the deck will be added).
+
 ## Modify card decks using terminal control:
-Using the terminal_control python program you can add cards to your decks, create new decks, delete and clear decks.
+Using the terminal_control python program you can add cards to your decks, create new decks (just specify a new deck name when adding a card an the deck will be added), delete and clear decks.
 
 You can also display all the decks and the cards in them.
 
